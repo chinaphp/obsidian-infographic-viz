@@ -1,0 +1,10 @@
+{
+  "id": "infographic-viz",
+  "name": "Infographic Viz",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Beautiful infographics using official @antv/infographic. Right-click to export PNG/SVG, copy to clipboard, and choose from 200+ themes.",
+  "author": "Coffee",
+  "authorUrl": "https://github.com/chinaphp",
+  "isDesktopOnly": false
+}

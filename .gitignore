@@ -1,0 +1,48 @@
+.alma-snapshots
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build output
+*.js.map
+main.js
+
+# Obsidian
+.obsidian/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test
+test/
+spec/
+coverage/
+
+# Temporary files
+*.tmp
+.cache/
+.eslintcache
+
+# Release files (except what we want to keep)
+!RELEASE_NOTES.md
+!CHANGELOG.md
+!README.md
+
+# Build artifacts
+dist/
