@@ -1,6 +1,6 @@
 # Infographic Viz for Obsidian
 
-[![Release](https://img.shields.io/github/v/chinaphp/obsidian-infographic-viz?style=flat-square)](https://github.com/chinaphp/obsidian-infographic-viz/releases)
+[![Release](https://img.shields.io/github/v/release/chinaphp/obsidian-infographic-viz?display_name=tag&style=flat-square)](https://github.com/chinaphp/obsidian-infographic-viz/releases)
 [![License](https://img.shields.io/github/license/chinaphp/obsidian-infographic-viz?style=flat-square)](LICENSE)
 
 Create beautiful infographic visualizations in Obsidian with official [@antv/infographic](https://github.com/antvis/Infographic) engine. Supports 200+ templates and themes with PNG/SVG export functionality.
