@@ -7,7 +7,7 @@ export default class InfographicPlugin extends Plugin {
     instances: WeakMap<HTMLElement, Infographic> = new WeakMap();
 
     async onload() {
-        console.log('Loading Infographic Viz plugin...');
+        console.debug('Loading Infographic Viz plugin...');
         await this.loadSettings();
 
         // 添加设置选项卡
@@ -18,7 +18,7 @@ export default class InfographicPlugin extends Plugin {
             this.renderInfographic(content, el);
         });
 
-        console.log('Infographic Viz plugin loaded successfully');
+        console.debug('Infographic Viz plugin loaded successfully');
     }
 
     onunload() {
@@ -74,7 +74,7 @@ export default class InfographicPlugin extends Plugin {
         // 复制图表到剪贴板
         menu.addItem((item) =>
             item
-                .setTitle('Copy to Clipboard (PNG)')
+                .setTitle('Copy to clipboard (PNG)')
                 .setIcon('copy')
                 .onClick(async () => {
                     await this.copyToClipboard(instance);
@@ -163,7 +163,7 @@ export default class InfographicPlugin extends Plugin {
     // 辅助函数：将 data URL 转换为 Blob
     private dataUrlToBlob(dataUrl: string): Blob {
         const arr = dataUrl.split(',');
-        if (arr.length < 2 || !arr[0] || !arr[1]) {
+        if (arr.length < 2) {
             throw new Error('Invalid data URL');
         }
 

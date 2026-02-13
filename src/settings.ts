@@ -1,4 +1,4 @@
-import { PluginSettingTab, App, DropdownComponent, ToggleComponent } from 'obsidian';
+import { PluginSettingTab, App, DropdownComponent, ToggleComponent, Setting } from 'obsidian';
 import { InfographicPlugin } from './main';
 import { getThemes } from '@antv/infographic';
 
@@ -24,11 +24,13 @@ export class InfographicSettingTab extends PluginSettingTab {
         const { containerEl } = this;
         containerEl.empty();
 
-        containerEl.createEl('h2', { text: 'Infographic Viz Settings' });
+        new Setting(containerEl)
+            .setName('Infographic Viz Settings')
+            .setHeading();
 
         // 主题选择
         new Setting(containerEl)
-            .setName('Default Theme')
+            .setName('Default theme')
             .setDesc('Choose the default theme for infographics.')
             .addDropdown((dropdown: DropdownComponent) => {
                 // 添加 "Auto" 选项
@@ -49,7 +51,7 @@ export class InfographicSettingTab extends PluginSettingTab {
 
         // 可编辑模式
         new Setting(containerEl)
-            .setName('Editable Mode')
+            .setName('Editable mode')
             .setDesc('Enable inline editing of infographics.')
             .addToggle((toggle: ToggleComponent) => {
                 toggle.setValue(this.plugin.settings.editable);
@@ -59,35 +61,52 @@ export class InfographicSettingTab extends PluginSettingTab {
                 });
             });
 
-        containerEl.createEl('h3', { text: 'Export Options' });
-        
-        const exportDiv = containerEl.createDiv({ cls: 'setting-item-description' });
-        exportDiv.innerHTML = `
-            <p>Right-click on any infographic to access export options:</p>
-            <ul style="margin-top: 8px; padding-left: 20px;">
-                <li><strong>Copy to Clipboard (PNG)</strong> - Copy PNG image to clipboard for pasting</li>
-                <li><strong>Export as PNG</strong> - Download infographic as PNG file</li>
-                <li><strong>Export as SVG</strong> - Download infographic as SVG vector file</li>
-            </ul>
-        `;
+        new Setting(containerEl)
+            .setName('Export options')
+            .setHeading();
 
-        containerEl.createEl('h3', { text: 'Usage' });
-        
+        const exportDiv = containerEl.createDiv({ cls: 'setting-item-description' });
+        const exportP = exportDiv.createEl('p');
+        exportP.textContent = 'Right-click on any infographic to access export options:';
+
+        const exportUl = exportDiv.createEl('ul');
+        exportUl.style.marginTop = '8px';
+        exportUl.style.paddingLeft = '20px';
+
+        const exportLi1 = exportUl.createEl('li');
+        const exportStrong1 = exportLi1.createEl('strong');
+        exportStrong1.textContent = 'Copy to clipboard (PNG)';
+        exportLi1.appendText(' - Copy PNG image to clipboard for pasting');
+
+        const exportLi2 = exportUl.createEl('li');
+        const exportStrong2 = exportLi2.createEl('strong');
+        exportStrong2.textContent = 'Export as PNG';
+        exportLi2.appendText(' - Download infographic as PNG file');
+
+        const exportLi3 = exportUl.createEl('li');
+        const exportStrong3 = exportLi3.createEl('strong');
+        exportStrong3.textContent = 'Export as SVG';
+        exportLi3.appendText(' - Download infographic as SVG vector file');
+
+        new Setting(containerEl)
+            .setName('Usage')
+            .setHeading();
+
         const usageDiv = containerEl.createDiv({ cls: 'setting-item-description' });
-        usageDiv.innerHTML = `
-            <p>Use <code>infographic</code> code blocks to create infographics:</p>
-            <pre style="margin-top: 8px; padding: 8px; background: var(--background-secondary); border-radius: 4px; overflow-x: auto;"><code>\`\`\`infographic
-infographic sequence-zigzag-steps-underline-text
-data
-  title Process Flow
-  items
-    - label Phase 1
-      desc Initial setup
-    - label Phase 2
-      desc Development
-    - label Phase 3
-      desc Testing
-\`\`\`</code></pre>
-        `;
+        const usageP = usageDiv.createEl('p');
+        const usageCode = usageP.createEl('code');
+        usageCode.textContent = 'infographic';
+        usageP.prependText('Use ');
+        usageP.appendText(' code blocks to create infographics:');
+
+        const usagePre = usageDiv.createEl('pre');
+        usagePre.style.marginTop = '8px';
+        usagePre.style.padding = '8px';
+        usagePre.style.background = 'var(--background-secondary)';
+        usagePre.style.borderRadius = '4px';
+        usagePre.style.overflowX = 'auto';
+
+        const usageCodeBlock = usagePre.createEl('code');
+        usageCodeBlock.textContent = '```infographic\ninfographic sequence-zigzag-steps-underline-text\ndata\n  title Process Flow\n  items\n    - label Phase 1\n      desc Initial setup\n    - label Phase 2\n      desc Development\n    - label Phase 3\n      desc Testing\n```';
     }
 }

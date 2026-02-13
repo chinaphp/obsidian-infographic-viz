@@ -181,12 +181,10 @@ function parseItem(ctx: ParseContext, itemIndent: number): InfographicItem {
     }
     
     ctx.currentIndex++;
-    
+
     const item: InfographicItem = { label };
-    
+
     // Parse item properties (value, desc, icon, children)
-    const propIndent = itemIndent + 2;
-    
     while (ctx.currentIndex < ctx.lines.length) {
         const propLine = ctx.lines[ctx.currentIndex];
         const propTrimmed = propLine.trim();

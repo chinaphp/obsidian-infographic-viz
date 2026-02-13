@@ -183,7 +183,7 @@ const COLOR_SCHEMES = {
     }
 };
 
-function getThemeColors(theme: 'light' | 'dark', scheme: string): any {
+function getThemeColors(theme: 'light' | 'dark', scheme: string) {
     const schemeKey = scheme as keyof typeof COLOR_SCHEMES;
     const themeKey = theme as 'light' | 'dark';
     return COLOR_SCHEMES[schemeKey]?.[themeKey] || COLOR_SCHEMES.default[themeKey];
@@ -198,11 +198,11 @@ const PIE_COLORS = {
 /**
  * Main render function
  */
-export async function renderInfographic(
+export function renderInfographic(
     data: InfographicData,
     container: HTMLElement,
     options: RenderOptions
-): Promise<void> {
+): void {
     const theme = getThemeColors(options.theme, options.colorScheme);
     const category = getTemplateCategory(data.template);
     
@@ -319,7 +319,7 @@ function renderHorizontalArrowList(items: InfographicItem[], container: HTMLElem
         if (index < items.length - 1) {
             const arrowEl = document.createElement('div');
             arrowEl.className = 'ig-arrow';
-            arrowEl.innerHTML = '→';
+            arrowEl.textContent = '→';
             itemEl.appendChild(arrowEl);
         }
         
@@ -338,12 +338,12 @@ function renderGridList(items: InfographicItem[], container: HTMLElement, _optio
     items.forEach((item) => {
         const cardEl = document.createElement('div');
         cardEl.className = isCompact ? 'ig-compact-card' : 'ig-badge-card';
-        
+
         // Icon
         if (item.icon) {
             const iconEl = document.createElement('div');
             iconEl.className = 'ig-card-icon';
-            iconEl.innerHTML = renderIcon(item.icon);
+            iconEl.appendChild(renderIcon(item.icon));
             cardEl.appendChild(iconEl);
         }
         
@@ -382,10 +382,10 @@ function renderDoneList(items: InfographicItem[], container: HTMLElement, _optio
     items.forEach((item) => {
         const itemEl = document.createElement('div');
         itemEl.className = 'ig-done-item';
-        
+
         const checkEl = document.createElement('div');
         checkEl.className = 'ig-check';
-        checkEl.innerHTML = '✓';
+        checkEl.textContent = '✓';
         itemEl.appendChild(checkEl);
         
         const contentEl = document.createElement('div');
@@ -966,13 +966,19 @@ function renderQuadrant(data: InfographicData, container: HTMLElement, _options:
 /**
  * Render icon from Iconify format (mdi:icon-name)
  */
-function renderIcon(iconStr: string): string {
+function renderIcon(iconStr: string): HTMLElement {
     // Parse icon format: mdi:icon-name
     const [prefix, name] = iconStr.split(':');
     if (!prefix || !name) {
-        return `<span class="ig-icon-fallback">●</span>`;
+        const fallbackEl = document.createElement('span');
+        fallbackEl.className = 'ig-icon-fallback';
+        fallbackEl.textContent = '●';
+        return fallbackEl;
     }
-    
+
     // Use Iconify CDN for icons
-    return `<span class="iconify" data-icon="${iconStr}"></span>`;
+    const iconEl = document.createElement('span');
+    iconEl.className = 'iconify';
+    iconEl.dataset.icon = iconStr;
+    return iconEl;
 }
