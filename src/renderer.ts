@@ -185,8 +185,7 @@ const COLOR_SCHEMES = {
 
 function getThemeColors(theme: 'light' | 'dark', scheme: string) {
     const schemeKey = scheme as keyof typeof COLOR_SCHEMES;
-    const themeKey = theme as 'light' | 'dark';
-    return COLOR_SCHEMES[schemeKey]?.[themeKey] || COLOR_SCHEMES.default[themeKey];
+    return COLOR_SCHEMES[schemeKey]?.[theme] || COLOR_SCHEMES.default[theme];
 }
 
 // Pie chart colors

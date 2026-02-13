@@ -50,4 +50,5 @@ coverage/
 
 # Build artifacts
 dist/
+release/
 .alma-snapshots

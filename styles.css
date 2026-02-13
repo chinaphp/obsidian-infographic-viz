@@ -28,3 +28,17 @@ body.theme-dark .infographic-error {
     border-color: #f38ba8;
     color: #f38ba8;
 }
+
+/* ===== Settings Page Styles ===== */
+.infographic-settings-export-list {
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+.infographic-settings-code-block {
+    margin-top: 8px;
+    padding: 8px;
+    background: var(--background-secondary);
+    border-radius: 4px;
+    overflow-x: auto;
+}

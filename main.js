@@ -46189,9 +46189,9 @@ var InfographicSettingTab = class extends import_obsidian.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian.Setting(containerEl).setName("Infographic Viz Settings").setHeading();
+    new import_obsidian.Setting(containerEl).setName("Infographic Viz").setHeading();
     new import_obsidian.Setting(containerEl).setName("Default theme").setDesc("Choose the default theme for infographics.").addDropdown((dropdown) => {
-      dropdown.addOption("", "Auto (Use Infographic Default)");
+      dropdown.addOption("", "Auto (use Infographic default)");
       const themes = getThemes();
       themes.forEach((theme) => {
         dropdown.addOption(theme, theme);
@@ -46213,12 +46213,10 @@ var InfographicSettingTab = class extends import_obsidian.PluginSettingTab {
     const exportDiv = containerEl.createDiv({ cls: "setting-item-description" });
     const exportP = exportDiv.createEl("p");
     exportP.textContent = "Right-click on any infographic to access export options:";
-    const exportUl = exportDiv.createEl("ul");
-    exportUl.style.marginTop = "8px";
-    exportUl.style.paddingLeft = "20px";
+    const exportUl = exportDiv.createEl("ul", { cls: "infographic-settings-export-list" });
     const exportLi1 = exportUl.createEl("li");
     const exportStrong1 = exportLi1.createEl("strong");
-    exportStrong1.textContent = "Copy to clipboard (PNG)";
+    exportStrong1.textContent = "Copy to clipboard";
     exportLi1.appendText(" - Copy PNG image to clipboard for pasting");
     const exportLi2 = exportUl.createEl("li");
     const exportStrong2 = exportLi2.createEl("strong");
@@ -46234,13 +46232,8 @@ var InfographicSettingTab = class extends import_obsidian.PluginSettingTab {
     const usageCode = usageP.createEl("code");
     usageCode.textContent = "infographic";
     usageP.prependText("Use ");
-    usageP.appendText(" code blocks to create infographics:");
-    const usagePre = usageDiv.createEl("pre");
-    usagePre.style.marginTop = "8px";
-    usagePre.style.padding = "8px";
-    usagePre.style.background = "var(--background-secondary)";
-    usagePre.style.borderRadius = "4px";
-    usagePre.style.overflowX = "auto";
+    usageP.appendText(" code blocks to create infographics");
+    const usagePre = usageDiv.createEl("pre", { cls: "infographic-settings-code-block" });
     const usageCodeBlock = usagePre.createEl("code");
     usageCodeBlock.textContent = "```infographic\ninfographic sequence-zigzag-steps-underline-text\ndata\n  title Process Flow\n  items\n    - label Phase 1\n      desc Initial setup\n    - label Phase 2\n      desc Development\n    - label Phase 3\n      desc Testing\n```";
   }

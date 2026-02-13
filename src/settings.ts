@@ -25,7 +25,7 @@ export class InfographicSettingTab extends PluginSettingTab {
         containerEl.empty();
 
         new Setting(containerEl)
-            .setName('Infographic Viz Settings')
+            .setName('Infographic Viz')
             .setHeading();
 
         // 主题选择
@@ -34,7 +34,7 @@ export class InfographicSettingTab extends PluginSettingTab {
             .setDesc('Choose the default theme for infographics.')
             .addDropdown((dropdown: DropdownComponent) => {
                 // 添加 "Auto" 选项
-                dropdown.addOption('', 'Auto (Use Infographic Default)');
+                dropdown.addOption('', 'Auto (use Infographic default)');
                 
                 // 获取所有可用的主题
                 const themes = getThemes();
@@ -69,13 +69,11 @@ export class InfographicSettingTab extends PluginSettingTab {
         const exportP = exportDiv.createEl('p');
         exportP.textContent = 'Right-click on any infographic to access export options:';
 
-        const exportUl = exportDiv.createEl('ul');
-        exportUl.style.marginTop = '8px';
-        exportUl.style.paddingLeft = '20px';
+        const exportUl = exportDiv.createEl('ul', { cls: 'infographic-settings-export-list' });
 
         const exportLi1 = exportUl.createEl('li');
         const exportStrong1 = exportLi1.createEl('strong');
-        exportStrong1.textContent = 'Copy to clipboard (PNG)';
+        exportStrong1.textContent = 'Copy to clipboard';
         exportLi1.appendText(' - Copy PNG image to clipboard for pasting');
 
         const exportLi2 = exportUl.createEl('li');
@@ -97,14 +95,9 @@ export class InfographicSettingTab extends PluginSettingTab {
         const usageCode = usageP.createEl('code');
         usageCode.textContent = 'infographic';
         usageP.prependText('Use ');
-        usageP.appendText(' code blocks to create infographics:');
+        usageP.appendText(' code blocks to create infographics');
 
-        const usagePre = usageDiv.createEl('pre');
-        usagePre.style.marginTop = '8px';
-        usagePre.style.padding = '8px';
-        usagePre.style.background = 'var(--background-secondary)';
-        usagePre.style.borderRadius = '4px';
-        usagePre.style.overflowX = 'auto';
+        const usagePre = usageDiv.createEl('pre', { cls: 'infographic-settings-code-block' });
 
         const usageCodeBlock = usagePre.createEl('code');
         usageCodeBlock.textContent = '```infographic\ninfographic sequence-zigzag-steps-underline-text\ndata\n  title Process Flow\n  items\n    - label Phase 1\n      desc Initial setup\n    - label Phase 2\n      desc Development\n    - label Phase 3\n      desc Testing\n```';
