@@ -15,36 +15,6 @@ Create beautiful infographic visualizations in Obsidian with official [@antv/inf
 - 📱 **Responsive** - Works on desktop and mobile
 - 🔄 **Live Preview** - Real-time rendering in edit mode
 
-## 📦 Installation
-
-### Method 1: BRAT Plugin (Recommended)
-
-1. Install the [BRAT (Beta Tester's Auto-update Tool)](https://github.com/TfTHacker/obsidian42-brat) plugin from Community Plugins
-2. Open BRAT settings
-3. Click "Add a beta plugin"
-4. Enter the repository URL:
-   ```
-   https://github.com/chinaphp/obsidian-infographic-viz
-   ```
-5. Click "Add Plugin"
-6. Enable "Infographic Viz" in Community Plugins
-
-### Method 2: Manual Installation
-
-1. Download the latest release from [GitHub Releases](https://github.com/chinaphp/obsidian-infographic-viz/releases/latest)
-2. Extract the files to your Obsidian vault's `.obsidian/plugins/infographic-viz/` directory
-3. Enable the plugin in Obsidian settings
-
-### Method 3: From Source
-
-```bash
-cd ~/.obsidian/plugins
-git clone https://github.com/chinaphp/obsidian-infographic-viz.git
-cd obsidian-infographic-viz
-bun install
-bun run build
-```
-
 ## 🚀 Usage
 
 Create infographics using the `infographic` code block:
