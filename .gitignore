@@ -1,5 +1,3 @@
-.alma-snapshots
-
 # Logs
 logs
 *.log
@@ -19,7 +17,7 @@ pnpm-lock.yaml
 
 # Build output
 *.js.map
-main.js
+# main.js - MUST be committed for Obsidian plugin distribution
 
 # Obsidian
 .obsidian/
@@ -52,3 +50,4 @@ coverage/
 
 # Build artifacts
 dist/
+.alma-snapshots
