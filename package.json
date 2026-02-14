@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "bun run esbuild.config.mjs",
     "build": "bun run esbuild.config.mjs production",
+    "watch": "bun run esbuild.config.mjs development --watch",
+    "copy": "bun run build && node scripts/copy-local.mjs",
     "lint": "eslint .",
     "type-check": "tsc -noEmit -skipLibCheck",
     "release": "bun run build && node version-bump.mjs",
