@@ -46189,9 +46189,8 @@ var InfographicSettingTab = class extends import_obsidian.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian.Setting(containerEl).setName("Infographic Viz").setHeading();
     new import_obsidian.Setting(containerEl).setName("Default theme").setDesc("Choose the default theme for infographics.").addDropdown((dropdown) => {
-      dropdown.addOption("", "Auto (use Infographic default)");
+      dropdown.addOption("", "Auto (use infographic default)");
       const themes = getThemes();
       themes.forEach((theme) => {
         dropdown.addOption(theme, theme);
@@ -46209,7 +46208,7 @@ var InfographicSettingTab = class extends import_obsidian.PluginSettingTab {
         await this.plugin.saveSettings();
       });
     });
-    new import_obsidian.Setting(containerEl).setName("Export options").setHeading();
+    new import_obsidian.Setting(containerEl).setName("Export").setHeading();
     const exportDiv = containerEl.createDiv({ cls: "setting-item-description" });
     const exportP = exportDiv.createEl("p");
     exportP.textContent = "Right-click on any infographic to access export options:";
@@ -46235,7 +46234,7 @@ var InfographicSettingTab = class extends import_obsidian.PluginSettingTab {
     usageP.appendText(" code blocks to create infographics");
     const usagePre = usageDiv.createEl("pre", { cls: "infographic-settings-code-block" });
     const usageCodeBlock = usagePre.createEl("code");
-    usageCodeBlock.textContent = "```infographic\ninfographic sequence-zigzag-steps-underline-text\ndata\n  title Process Flow\n  items\n    - label Phase 1\n      desc Initial setup\n    - label Phase 2\n      desc Development\n    - label Phase 3\n      desc Testing\n```";
+    usageCodeBlock.textContent = "```infographic\ninfographic sequence-zigzag-steps-underline-text\ndata\n  title Process Flow\n  items\n    - label phase 1\n      desc Initial setup\n    - label phase 2\n      desc Development\n    - label phase 3\n      desc Testing\n```";
   }
 };
 

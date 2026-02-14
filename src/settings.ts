@@ -24,17 +24,13 @@ export class InfographicSettingTab extends PluginSettingTab {
         const { containerEl } = this;
         containerEl.empty();
 
-        new Setting(containerEl)
-            .setName('Infographic Viz')
-            .setHeading();
-
         // 主题选择
         new Setting(containerEl)
             .setName('Default theme')
             .setDesc('Choose the default theme for infographics.')
             .addDropdown((dropdown: DropdownComponent) => {
                 // 添加 "Auto" 选项
-                dropdown.addOption('', 'Auto (use Infographic default)');
+                dropdown.addOption('', 'Auto (use infographic default)');
                 
                 // 获取所有可用的主题
                 const themes = getThemes();
@@ -62,7 +58,7 @@ export class InfographicSettingTab extends PluginSettingTab {
             });
 
         new Setting(containerEl)
-            .setName('Export options')
+            .setName('Export')
             .setHeading();
 
         const exportDiv = containerEl.createDiv({ cls: 'setting-item-description' });
@@ -100,6 +96,6 @@ export class InfographicSettingTab extends PluginSettingTab {
         const usagePre = usageDiv.createEl('pre', { cls: 'infographic-settings-code-block' });
 
         const usageCodeBlock = usagePre.createEl('code');
-        usageCodeBlock.textContent = '```infographic\ninfographic sequence-zigzag-steps-underline-text\ndata\n  title Process Flow\n  items\n    - label Phase 1\n      desc Initial setup\n    - label Phase 2\n      desc Development\n    - label Phase 3\n      desc Testing\n```';
+        usageCodeBlock.textContent = '```infographic\ninfographic sequence-zigzag-steps-underline-text\ndata\n  title Process Flow\n  items\n    - label phase 1\n      desc Initial setup\n    - label phase 2\n      desc Development\n    - label phase 3\n      desc Testing\n```';
     }
 }
