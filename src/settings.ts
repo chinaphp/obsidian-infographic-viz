@@ -89,7 +89,7 @@ export class InfographicSettingTab extends PluginSettingTab {
         const usageDiv = containerEl.createDiv({ cls: 'setting-item-description' });
         const usageP = usageDiv.createEl('p');
         const usageCode = usageP.createEl('code');
-        usageCode.textContent = 'infographic';
+        usageCode.textContent = 'Infographic';
         usageP.prependText('Use ');
         usageP.appendText(' code blocks to create infographics');
 
